@@ -10,15 +10,11 @@
         "projectUniqueName": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Business\\Guden.Business.csproj",
         "projectName": "Guden.Business",
         "projectPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Business\\Guden.Business.csproj",
-        "packagesPath": "C:\\Users\\ugurc\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\ugurcanguden\\.nuget\\packages\\",
         "outputPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Business\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ugurc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ugurcanguden\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,15 +77,11 @@
         "projectUniqueName": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Core\\Guden.Core.csproj",
         "projectName": "Guden.Core",
         "projectPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Core\\Guden.Core.csproj",
-        "packagesPath": "C:\\Users\\ugurc\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\ugurcanguden\\.nuget\\packages\\",
         "outputPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ugurc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ugurcanguden\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -161,15 +153,11 @@
         "projectUniqueName": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.DataAccess\\Guden.DataAccess.csproj",
         "projectName": "Guden.DataAccess",
         "projectPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.DataAccess\\Guden.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\ugurc\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\ugurcanguden\\.nuget\\packages\\",
         "outputPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ugurc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ugurcanguden\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -236,15 +224,11 @@
         "projectUniqueName": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Entities\\Guden.Entities.csproj",
         "projectName": "Guden.Entities",
         "projectPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Entities\\Guden.Entities.csproj",
-        "packagesPath": "C:\\Users\\ugurc\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\ugurcanguden\\.nuget\\packages\\",
         "outputPath": "C:\\inetpub\\wwwroot\\guden\\GudenSolution\\Guden.Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ugurc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ugurcanguden\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

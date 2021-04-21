@@ -2,7 +2,6 @@ C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\bin\Debug\net5.0\Guden.Core.de
 C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\bin\Debug\net5.0\Guden.Core.dll
 C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\bin\Debug\net5.0\ref\Guden.Core.dll
 C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\bin\Debug\net5.0\Guden.Core.pdb
-C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\obj\Debug\net5.0\Guden.Core.csprojAssemblyReference.cache
 C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\obj\Debug\net5.0\Guden.Core.GeneratedMSBuildEditorConfig.editorconfig
 C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\obj\Debug\net5.0\Guden.Core.AssemblyInfoInputs.cache
 C:\inetpub\wwwroot\guden\GudenSolution\Guden.Core\obj\Debug\net5.0\Guden.Core.AssemblyInfo.cs
