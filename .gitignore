@@ -3,3 +3,8 @@
 ################################################################################
 
 /Guden.Core/DataAccess/config - Kopya
+/Guden.Api/obj/Debug/net5.0
+/Guden.Business/obj/Debug/net5.0
+/Guden.Core/obj/Debug/net5.0
+/Guden.DataAccess/obj/Debug/net5.0
+/Guden.Entities/obj/Debug/net5.0
