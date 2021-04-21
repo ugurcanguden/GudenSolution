@@ -1,0 +1,17 @@
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.Core.dll
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.Entities.dll
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.csprojAssemblyReference.cache
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.AssemblyInfoInputs.cache
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.AssemblyInfo.cs
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.DataAccess.deps.json
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.DataAccess.dll
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\ref\Guden.DataAccess.dll
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.DataAccess.pdb
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.Core.pdb
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\bin\Debug\net5.0\Guden.Entities.pdb
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.csproj.CoreCompileInputs.cache
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.csproj.CopyComplete
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.dll
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\ref\Guden.DataAccess.dll
+C:\inetpub\wwwroot\guden\GudenSolution\Guden.DataAccess\obj\Debug\net5.0\Guden.DataAccess.pdb
