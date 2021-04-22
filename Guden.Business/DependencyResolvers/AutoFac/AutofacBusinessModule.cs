@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using Guden.Business.Abstract;
 using Guden.Business.Concrete;
+using Guden.Core.Utilities.Interceptors;
 using Guden.Core.Utilities.Security.Jwt;
 using Guden.DataAccess.Abstract;
 using Guden.DataAccess.Concrete.EntityFramework;
@@ -27,6 +30,16 @@ namespace Guden.Business.DependencyResolvers.AutoFac
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+
+            #region  Interception için yazıldı..
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
+            #endregion
         }
     }
 }

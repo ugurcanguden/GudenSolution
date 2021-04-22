@@ -8,7 +8,7 @@ using Guden.Entities.Dtos;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Guden.Api.Controllers
-{ 
+{
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : Controller

@@ -25,7 +25,7 @@ namespace Guden.Business.Concrete
         }
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
-            HasingHelper.CreatePasswordHash(password,out byte [] passwordHash,out byte []passwordSalt);
+            HashingHelper.CreatePasswordHash(password,out byte [] passwordHash,out byte []passwordSalt);
             var user = new User
             {
                 Email = userForRegisterDto.Email,
@@ -45,11 +45,10 @@ namespace Guden.Business.Concrete
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<User>(Messages.ProductDeleted);
+                return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
-            if (HasingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash,
-                userToCheck.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }

@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Guden.Business.Abstract;
+using Guden.Business.ValidationRules.FluentValidation;
+using Guden.Core.Aspects.Autofac.Validation;
 using Guden.Core.Contants;
+using Guden.Core.CrossCuttingConcerns.Validation;
 using Guden.Core.Utilities.Results;
 using Guden.DataAccess.Abstract;
 using Guden.Entities.Concrete;
@@ -34,10 +37,11 @@ namespace Guden.Business.Concrete
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetList(p=>p.CategoryId==categoryId).ToList());
         }
-
+        [ValidationAspect(typeof(ProductValidator),Priority =1)]
         public IResult Add(Product product)
         {
             ///Kontroler
+            ValidationTool.Validate(new ProductValidator(), product);
             _productDal.Add(product);
             return new SuccessDataResult<Product>( Messages.ProductAdded);
         }

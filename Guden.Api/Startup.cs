@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Guden.Core.Utilities.Security.Encyption;
 using Guden.Core.Utilities.Security.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Guden.Api
 {
@@ -32,42 +33,77 @@ namespace Guden.Api
         {
 
             services.AddControllers();
-
+         
             #region MyRegion
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:44337"));
             });
             Guden.Core.Utilities.Security.Jwt.TokenOptions tokenOptions =Configuration.GetSection("TokenOptions").Get<Guden.Core.Utilities.Security.Jwt.TokenOptions>() ;
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
-                options =>
-                { 
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience  = true,
-                        ValidateLifetime = true,
-                        ValidIssuer = tokenOptions.Issuer,
-                        ValidAudience = tokenOptions.Audience,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
-                    };
-                }
-                    );
-            #endregion
 
-            services.AddSwaggerGen(c =>
+            // Adding Authentication  
+            services.AddAuthentication(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Guden.Api", Version = "v1" });
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+
+            // Adding Jwt Bearer  
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = tokenOptions.Audience,
+                    ValidIssuer = tokenOptions.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
+                };
+            });
+
+            services.AddSwaggerGen(swagger =>
+            {
+                //This is to generate the Default UI of Swagger Documentation    
+                swagger.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Guden API",
+                    Description = "Guden API  JWT and Swagger"
+                });
+                // To Enable authorization using Swagger (JWT)    
+                swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
                     Name = "Authorization",
-                    In=ParameterLocation.Header,
-                    Type=SecuritySchemeType.ApiKey
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+                });
+                swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+
+                    }
                 });
             });
-        }
+        
+        #endregion
+
+
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -76,10 +112,7 @@ namespace Guden.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(
-                    c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Guden.Api v1")
-
-                    ) ;
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Guden API   v1"));
             }
 
             #region Mymethod
@@ -88,19 +121,12 @@ namespace Guden.Api
 
             #endregion
 
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
-            #region MyRegion
-
             app.UseAuthentication();
-            
-
-            #endregion
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
