@@ -8,3 +8,12 @@
 /Guden.Core/obj/Debug/net5.0
 /Guden.DataAccess/obj/Debug/net5.0
 /Guden.Entities/obj/Debug/net5.0
+/Guden.Core/obj
+/Guden.Business/bin/Debug/net5.0
+/Guden.Business/obj
+/Guden.DataAccess/bin/Debug/net5.0
+/Guden.DataAccess/obj
+/Guden.Entities/bin/Debug/net5.0
+/Guden.Entities/obj
+/Guden.Api/bin/Debug/net5.0
+/Guden.Api/obj
