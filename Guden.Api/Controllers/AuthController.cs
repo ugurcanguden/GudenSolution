@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace Guden.Api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
+    [Consumes("application/json")]
     public class AuthController : Controller
     {
         private IAuthService _authService;

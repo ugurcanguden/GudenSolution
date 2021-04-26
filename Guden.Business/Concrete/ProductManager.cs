@@ -8,6 +8,7 @@ using Guden.Business.ValidationRules.FluentValidation;
 using Guden.Core.Aspects.Autofac.Validation;
 using Guden.Core.Contants;
 using Guden.Core.CrossCuttingConcerns.Validation;
+using Guden.Core.Entities.Concrete;
 using Guden.Core.Utilities.Results;
 using Guden.DataAccess.Abstract;
 using Guden.Entities.Concrete;
@@ -28,14 +29,18 @@ namespace Guden.Business.Concrete
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
 
-        public IDataResult< List<Product>> GetList()
+        public IDataResult< List<Product>> GetList(PagerRequest pagerRequest)
         {
-            return new SuccessDataResult <List<Product>>(_productDal.GetList().ToList()) ;
+            var request = _productDal.GetList()
+                                                                .Skip(pagerRequest.PageIndex*pagerRequest.PageSize)
+                                                                .Take(pagerRequest.PageSize)
+                                                                .ToList();
+            return new SuccessDataResult <List<Product>>(request) ;
         }
 
         public IDataResult<List<Product>> GetListByCategoryById(int categoryId)
-        {
-            return new SuccessDataResult<List<Product>>(_productDal.GetList(p=>p.CategoryId==categoryId).ToList());
+        { 
+            return new SuccessDataResult<List<Product>>(_productDal.GetList(p => p.CategoryId == categoryId).ToList());
         }
         [ValidationAspect(typeof(ProductValidator),Priority =1)]
         public IResult Add(Product product)

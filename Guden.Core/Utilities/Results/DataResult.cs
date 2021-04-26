@@ -17,7 +17,14 @@ namespace Guden.Core.Utilities.Results
         {
             Data = data;
         }
+        public DataResult(T data,int dataCount, bool success) : base(success)
+        {
+            Data = data;
+            DataCount = dataCount;
+        }
+
 
         public T Data { get; }
+        public int DataCount { get; set; }
     }
 }

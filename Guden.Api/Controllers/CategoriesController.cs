@@ -9,8 +9,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace Guden.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    [Authorize]
+    [Route("api/[controller]")]
+    [Authorize] 
+    [Consumes("application/json")]
     public class CategoriesController : ControllerBase
     {
         private ICategoryService _categoryService;

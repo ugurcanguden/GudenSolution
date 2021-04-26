@@ -9,5 +9,6 @@ namespace Guden.Core.Utilities.Results
     public interface IDataResult<T>:IResult
     {
         T Data { get; }
+        public int DataCount { get; set; }
     }
 }
