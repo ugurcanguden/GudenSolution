@@ -8,12 +8,12 @@ namespace Guden.Core.Utilities.Results
 {
     public class SuccessResult:Result
     {
-        public SuccessResult(bool success, string message) : base(success, message)
+        public SuccessResult(string message) : base(true, message)
         {
         }
 
-        public SuccessResult(bool success) : base(true)
+        public SuccessResult() : base(true)
         {
-        } 
+        }
     }
 }

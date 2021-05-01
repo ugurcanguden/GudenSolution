@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Guden.Business.Abstract;
 using Guden.Business.ValidationRules.FluentValidation;
 using Guden.Core.Aspects.Autofac.Validation;
 using Guden.Core.Contants;
 using Guden.Core.CrossCuttingConcerns.Validation;
-using Guden.Core.Entities.Concrete;
+using Guden.Core.Entities.Utilities;
 using Guden.Core.Utilities.Results;
+
 using Guden.DataAccess.Abstract;
 using Guden.Entities.Concrete;
 
@@ -29,13 +28,13 @@ namespace Guden.Business.Concrete
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
 
-        public IDataResult< List<Product>> GetList(PagerRequest pagerRequest)
+        public IDataResult<PagerResult<Product>> GetList(PagerRequest pagerRequest)
         {
-            var request = _productDal.GetList()
-                                                                .Skip(pagerRequest.PageIndex*pagerRequest.PageSize)
-                                                                .Take(pagerRequest.PageSize)
-                                                                .ToList();
-            return new SuccessDataResult <List<Product>>(request) ;
+                var result=  Guden.Core.Utilities.ToolUtilities
+                            .PagerResult<Product>
+                            .GetPagerRequest(_productDal.GetList().ToList(),  pagerRequest);
+
+            return new SuccessDataResult<PagerResult<Product>>(result);
         }
 
         public IDataResult<List<Product>> GetListByCategoryById(int categoryId)
@@ -43,7 +42,7 @@ namespace Guden.Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetList(p => p.CategoryId == categoryId).ToList());
         }
         [ValidationAspect(typeof(ProductValidator),Priority =1)]
-        public IResult Add(Product product)
+        public Result Add(Product product)
         {
             ///Kontroler
             ValidationTool.Validate(new ProductValidator(), product);
@@ -51,14 +50,14 @@ namespace Guden.Business.Concrete
             return new SuccessDataResult<Product>( Messages.ProductAdded);
         }
 
-        public IResult Delete(Product product)
+        public Result Delete(Product product)
         {
             ///Kontroler
             _productDal.Delete(product);
             return new SuccessDataResult<Product>(Messages.ProductDeleted);
         }
 
-        public IResult Update(Product product)
+        public Result Update(Product product)
         {
             ///Kontroler
             _productDal.Update(product);

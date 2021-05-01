@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Guden.Api.Model.Utilities;
+using System.Threading.Tasks; 
 using Guden.Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Guden.Core.Entities.Utilities;
 
 namespace Guden.Api.Controllers
 {
@@ -25,17 +25,11 @@ namespace Guden.Api.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetList([FromQuery] PagerRequest request)
+        public IActionResult GetList([FromQuery]PagerRequest request)
         {
-            var result = _productService.GetList(new Core.Entities.Concrete.PagerRequest()
-            {
-                PageIndex = request.PageIndex,
-                PageSize = request.PageSize,
-                SortColumb = request.SortColumb
-            });
+            var result = _productService.GetList(request);
             if (result.Success)
-            {
-                result.DataCount = result.Data.Count;
+            { 
                 return Ok(result);
             }
             else
@@ -49,8 +43,7 @@ namespace Guden.Api.Controllers
         {
             var result = _productService.GetListByCategoryById(categoryId);
             if (result.Success)
-            {
-                result.DataCount = result.Data.Count;
+            { 
                 return Ok(result);
             }
             else
@@ -59,7 +52,7 @@ namespace Guden.Api.Controllers
             }
         }
 
-        [HttpGet("getbyidl")]
+        [HttpGet("getbyid")]
         public IActionResult GetById(int productId)
         {
             var result = _productService.GetById(productId);

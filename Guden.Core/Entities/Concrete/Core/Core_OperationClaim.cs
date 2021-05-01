@@ -1,6 +1,6 @@
-﻿namespace Guden.Core.Entities.Concrete
+﻿namespace Guden.Core.Entities.Concrete.Core
 {
-    public class OperationClaim:IEntity
+    public class Core_OperationClaim:IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

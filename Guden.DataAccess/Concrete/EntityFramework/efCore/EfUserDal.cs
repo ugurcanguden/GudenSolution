@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Guden.Core.DataAccess.EntityFramework;
-using Guden.Core.Entities.Concrete;
-using Guden.DataAccess.Abstract;
+using Guden.Core.Entities.Concrete.Core;
+using Guden.DataAccess.Abstract.Core;
 using Guden.DataAccess.Concrete.EntityFramework.Context;
 
 
-namespace Guden.DataAccess.Concrete.EntityFramework
+namespace Guden.DataAccess.Concrete.EntityFramework.efCore
 {
-    public class EfUserDal:EfEntityRepositoryBase<User, GudenDatabaseContext>,IUserDal
+    public class EfUserDal:EfEntityRepositoryBase<Core_User, GudenDatabaseContext>,IUserDal
     {
         /// <summary>
         /// User a ait rolleri döndürür.
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<OperationClaim> GetClaims(User user)
+        public List<Core_OperationClaim> GetClaims(Core_User user)
         {
             using (var context =new  GudenDatabaseContext())
             {
@@ -26,7 +26,7 @@ namespace Guden.DataAccess.Concrete.EntityFramework
                              join userOperationClaim in context.Core_UserOperationClaims
                         on operationClaim.Id equals userOperationClaim.OperationClaimId
                     where userOperationClaim.UserId == user.Id
-                    select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
+                    select new Core_OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
                 return result.ToList();
             }
         }

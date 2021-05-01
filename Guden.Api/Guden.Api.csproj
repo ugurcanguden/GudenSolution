@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Guden.Business\Guden.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
 </Project>

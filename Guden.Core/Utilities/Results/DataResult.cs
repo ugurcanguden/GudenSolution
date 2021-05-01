@@ -8,23 +8,16 @@ namespace Guden.Core.Utilities.Results
 {
     public class DataResult<T>:Result,IDataResult<T>
     {
-        public DataResult(T data,bool success, string message) : base(success, message)
+        public DataResult(T data, bool success, string message) : base(success, message)
         {
             Data = data;
         }
 
-        public DataResult(T data,bool success) : base(success)
+        public DataResult(T data, bool success) : base(success)
         {
             Data = data;
         }
-        public DataResult(T data,int dataCount, bool success) : base(success)
-        {
-            Data = data;
-            DataCount = dataCount;
-        }
-
 
         public T Data { get; }
-        public int DataCount { get; set; }
     }
 }

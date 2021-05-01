@@ -37,7 +37,7 @@ namespace Guden.Api
             #region MyRegion
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:44337"));
+                options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:44337","http://localhost:3000/"));
             });
             Guden.Core.Utilities.Security.Jwt.TokenOptions tokenOptions =Configuration.GetSection("TokenOptions").Get<Guden.Core.Utilities.Security.Jwt.TokenOptions>() ;
 
@@ -117,7 +117,11 @@ namespace Guden.Api
 
             #region Mymethod
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:44337").AllowAnyHeader());
+            // Make sure you call this before calling app.UseMvc()
+            app.UseCors(
+                options => 
+                options.WithOrigins("https://gudenmi20210425150935.azurewebsites.net/", "http://localhost:3000/").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+            );
 
             #endregion
 

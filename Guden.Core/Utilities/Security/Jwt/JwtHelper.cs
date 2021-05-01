@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Guden.Core.Entities.Concrete;
 using Microsoft.Extensions.Configuration;
 using Guden.Core.Extensions;
 using Guden.Core.Utilities.Security.Encyption;
 using Microsoft.IdentityModel.Tokens;
+using Guden.Core.Entities.Concrete.Core;
 
 namespace Guden.Core.Utilities.Security.Jwt
 {
@@ -29,7 +27,7 @@ namespace Guden.Core.Utilities.Security.Jwt
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<Guden.Core.Utilities.Security.Jwt.TokenOptions>();
-            _accessTokenExpirationn = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+           // _accessTokenExpirationn = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
         }
 
         /// <summary>
@@ -38,7 +36,7 @@ namespace Guden.Core.Utilities.Security.Jwt
         /// <param name="user"></param>
         /// <param name="operationClaims"></param>
         /// <returns></returns>
-        public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
+        public AccessToken CreateToken(Core_User user, List<Core_OperationClaim> operationClaims)
         {
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
@@ -48,7 +46,7 @@ namespace Guden.Core.Utilities.Security.Jwt
             return new AccessToken
                         {
                             Token = token,
-                            Expiration = _accessTokenExpirationn
+                            Expiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration)
             };
         }
 
@@ -60,14 +58,14 @@ namespace Guden.Core.Utilities.Security.Jwt
         /// <param name="signingCredentials"></param>
         /// <param name="operationClaims"></param>
         /// <returns></returns>
-        public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
-            SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
+        public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, Core_User user,
+            SigningCredentials signingCredentials, List<Core_OperationClaim> operationClaims)
         {
             var jwt = new JwtSecurityToken(
                 issuer: tokenOptions.Issuer,
                 audience: tokenOptions.Audience,
-                expires: _accessTokenExpirationn,
                 notBefore: DateTime.Now,
+                expires: DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration),                
                 claims: SetClaims(user, operationClaims),
                 signingCredentials: signingCredentials
             );
@@ -80,7 +78,7 @@ namespace Guden.Core.Utilities.Security.Jwt
         /// <param name="user"></param>
         /// <param name="operationClaims"></param>
         /// <returns></returns>
-        private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
+        private IEnumerable<Claim> SetClaims(Core_User user, List<Core_OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
             claims.AddNameIdentifier(user.Id.ToString());
@@ -89,5 +87,6 @@ namespace Guden.Core.Utilities.Security.Jwt
             claims.AddRoles(operationClaims.Select(c=>c.Name).ToArray());
             return claims;
         }
+
     }
 }
