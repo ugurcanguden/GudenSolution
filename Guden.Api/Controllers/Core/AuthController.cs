@@ -113,11 +113,11 @@ namespace Guden.Api.Controllers.Core
             }
         }
 
-        [HttpGet("getOperationClaim")]
-        
-        public IActionResult GetCore_OperationClaim()
+        [HttpGet("getOperationClaimSelectList")]
+       // [Authorize]
+        public IActionResult GetCore_OperationClaimSelectList()
         {
-            var result = _authService.GetOperationClaim();
+            var result = _authService.GetOperationClaimSelectList();
             return Ok(result);
         }
 

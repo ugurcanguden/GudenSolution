@@ -5,9 +5,11 @@ using Guden.Business.Abstract;
 using Guden.Business.Abstract.Core;
 using Guden.Core.Contants;
 using Guden.Core.Entities.Concrete.Core;
+using Guden.Core.Entities.Utilities;
 using Guden.Core.Utilities.Hashing;
 using Guden.Core.Utilities.Results;
 using Guden.Core.Utilities.Security.Jwt;
+using Guden.Core.Utilities.ToolUtilities;
 using Guden.DataAccess.Abstract.Core;
 using Guden.Entities.Dtos;
 
@@ -145,10 +147,9 @@ namespace Guden.Business.Concrete.Core
             return new SuccessDataResult<Core_User>(user, Messages.UserUpdated);
         }
 
-        public IDataResult<List<Core_OperationClaim>> GetOperationClaim()
-        {
-            
-            return new DataResult<List<Core_OperationClaim>>(_operationClaimDal.GetList().ToList(),true);
+        public List<SelectList> GetOperationClaimSelectList()
+        {            
+            return SelectList<Core_OperationClaim>.GetSelectList(_operationClaimDal.GetList().ToList(), "Id", "Name", "Id");
         }
     }
 }

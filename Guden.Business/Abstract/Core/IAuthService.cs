@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Guden.Core.Entities.Concrete.Core;
+using Guden.Core.Entities.Utilities;
 using Guden.Core.Utilities.Results;
 using Guden.Core.Utilities.Security.Jwt;
 using Guden.Entities.Dtos;
@@ -14,6 +15,6 @@ namespace Guden.Business.Abstract.Core
         IDataResult<Core_User> Login(UserForLoginDto userForLoginDto);
         Result UserExists(string email,int? userId);
         IDataResult<AccessToken> CreateAccessToken(Core_User user);
-        IDataResult<List<Core_OperationClaim>> GetOperationClaim();
+        List<SelectList> GetOperationClaimSelectList();
     }
 }
